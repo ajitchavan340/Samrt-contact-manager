@@ -1,0 +1,16 @@
+body{
+    background: #e2e2e2!important;
+}
+.banner{
+    width: 100%;
+    height: 93vh;
+    background: url("../img/phone-call.jpg");
+    background-size:cover ;
+}
+.my-card{
+    padding: 20px;
+    background: #ffffff;
+}
+#name_password{
+    margin-bottom:10px;
+}

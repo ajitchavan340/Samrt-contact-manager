@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org" lang="en" th:replace="main::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="my-card mt-1">
+
+                    <div  th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                        <p class="text-center" th:text="${session.message.content}"></p>
+                        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                    </div>
+
+                    <div class="continer text-center">
+                        <img style="width: 80px" src="" th:src="@{../img/owner.png}">
+                    </div>
+                    <h1 class="text-center">Registration </h1>
+
+                    <form novalidate action="" th:action="@{/do_register}" method="post" th:object="${user}">
+                        <div class="form-group">
+                            <label for="name_field" class="form-label">Your name</label>
+                            <input
+                                    name="user_name"
+                                    type="text"
+                                    class="form-control" id="name_field"
+                                    th:classappend="${#fields.hasErrors('user_name') ? 'is-invalid':''}"
+                                    placeholder="Enter name"
+                                    required
+                                    th:value="${user.user_name}"
+                            />
+                            <div class="invalid-feedback" th:each="e: ${#fields.errors('user_name')}" th:text="${e}">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name_email" class="form-label">Your email</label>
+                            <input
+                                    name="email"
+                                    type="email"
+                                    class="form-control"
+                                    id="name_email" aria-describedby="emailHelp"
+                                    th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}"
+                                    placeholder="Enter email"
+                                    required
+                                    th:value="${user.email}"
+                            />
+                            <div class="invalid-feedback" th:each="e: ${#fields.errors('email')}" th:text="${e}">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name_password" class="form-label">password</label>
+                            <input
+                                    name="password"
+                                    type="password"
+                                    class="form-control"
+                                    id="name_password"
+                                    aria-describedby="emailHelp"
+                                    th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}"
+                                    placeholder="Enter password"
+                                    required
+                            />
+                            <div class="invalid-feedback" th:each="e: ${#fields.errors('password')}" th:text="${e}">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+                        <div class="form-group form-check ">
+                            <input type="checkbox"
+                                   name="agreement"
+                                   class="form-check-input"
+                                   id="agreement">
+                            <labale for="agreement">Accept terms and condition</labale>
+                        </div>
+
+
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-success">signup</button>
+                            <button type="reset" class="btn btn-warning">reset</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
