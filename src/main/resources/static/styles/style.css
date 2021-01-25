@@ -6,6 +6,7 @@ body{
     height: 93vh;
     background: url("../img/phone-call.jpg");
     background-size:cover ;
+    object-fit: cover;
 }
 .my-card{
     padding: 20px;
@@ -13,4 +14,160 @@ body{
 }
 #name_password{
     margin-bottom:10px;
+}
+.card {
+    border: none;
+    border-radius: 0;
+    width: 420px !important;
+    margin: 0 auto
+}
+
+.signup {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 10px 50px
+}
+
+a {
+    text-decoration: none !important
+}
+
+h5 {
+    color: #ff0147;
+    margin-bottom: 3px;
+    font-weight: bold
+}
+
+small {
+    color: rgba(0, 0, 0, 0.3)
+}
+
+input {
+    width: 100%;
+    display: block;
+    margin-bottom: 7px
+}
+
+.form-control {
+    border: 1px solid #dc354575;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, .075);
+    letter-spacing: 1px
+}
+
+.form-control:focus {
+    border: 0.5px solid #dc354575;
+    border-radius: 30px;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, .075);
+    color: #000;
+    letter-spacing: 1px
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, rgba(249, 0, 104, 1) 0%, rgba(247, 117, 24, 1) 100%);
+    background: -webkit-linear-gradient(left, rgba(249, 0, 104, 1) 0%, rgba(247, 117, 24, 1) 100%)
+}
+
+.text-left {
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 400
+}
+
+.text-right {
+    color: #ff0147;
+    font-weight: bold
+}
+
+span.text-center {
+    color: rgba(0, 0, 0, 0.3)
+}
+
+.fab {
+    padding: 15px;
+    font-size: 23px
+}
+
+
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        display: none;
+        width: 80%!important;
+        height: 100vh;
+        background: white;
+        position: fixed;
+        padding-top: 20px;
+        z-index: 999999999999999999;
+    }
+    .content {
+        margin-left: 0%!important;
+    }
+}
+    .sidebar{
+        width: 18%;
+        height: 100vh;
+        background: white;
+        position: fixed;
+        padding-top: 20px;
+    }
+.content {
+    margin-left: 20%;
+}
+    .sidebar a {
+        display: block;
+        width: 100%;
+        padding: 10px 25px;
+        text-decoration: none;
+        color: gray;
+    }
+
+    .sidebar a:hover {
+        background: #e2e2e2;
+    }
+
+    .sidebar .devider {
+        height: .5px;
+        width: 100%;
+        background: #e2e2e2;
+        margin-top: 10px;
+    }
+.sidebar .crsBtn{
+    position: absolute;
+    top: 0;
+    right: 35px;
+    font-size: 36px;
+    cursor: pointer;
+}
+table{
+    font-family:'Calibri';
+    font-size:15px;
+    background-color:#fff;
+    color:#333;
+}
+.modal-header{
+    background-color:#333;
+    color:#fff;
+}
+.profile_picture{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+.search-container{
+    position: relative;
+}
+.search-result{
+    position: absolute;
+    background: white;
+    width: 100%;
+    height: 10px;
+    border: 1px solid gray;
+    display: none;
 }

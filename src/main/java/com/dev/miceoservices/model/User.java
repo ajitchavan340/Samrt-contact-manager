@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,21 +36,9 @@ public class User {
     private String role;
     private boolean enabled;
     private String image_url;
-
+    @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Contact> contacts = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id='" + user_id + '\'' +
-                ", user_name='" + user_name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", enabled=" + enabled +
-                ", image_url='" + image_url + '\'' +
-                ", contacts=" + contacts +
-                '}';
-    }
+
 }

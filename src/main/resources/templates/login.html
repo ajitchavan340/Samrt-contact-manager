@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org" lang="en" th:replace="main::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto py-4 px-0">
+                <div class="card p-0">
+                    <div class="card-title text-center">
+                        <h5 class="mt-5">HEY, THERE</h5> <small class="para">Login to your cool account below.</small>
+                    </div>
+                    <div class="text-center">
+                        <div th:if="${param.error}" class="alert alert-danger">
+                            Invalid username and password
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-danger">
+                            You have been logged out
+                        </div>
+                        <div th:if="${param.change}" class="alert alert-danger">
+                           <p th:text="${param.change}"></p>
+                        </div>
+                    </div>
+                    <form class="signup" th:action="@{/login}" method="post">
+                        <div class="form-group"><input type="text" class="form-control" placeholder="Username" name="username"></div>
+                        <div class="form-group"><input type="password" class="form-control" placeholder="password" name="password"></div> <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="form-group form-check ">
+                            <input type="checkbox"
+                                   name="agreement"
+                                   class="form-check-input"
+                                   id="agreement">
+                            <labale for="agreement">Remember Me</labale>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-sm-6"> <a href="/forgot/">
+                                <p class="text-left pt-2 ml-1">Forgot password?</p>
+                            </a> </div>
+                            <div class="col-6 col-sm-6"> <a href="/changepassword/">
+                                <p class="text-left pt-2 ml-1">Change password?</p>
+                            </a> </div>
+                            <div class="col-6 col-sm-6"> <a href="/signup/">
+                                <p class="text-center pt-2 mr-1">Sign Up Now</p>
+                            </a> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

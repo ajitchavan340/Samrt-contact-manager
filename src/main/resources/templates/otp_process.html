@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org" lang="en" th:replace="main::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-6 mx-auto py-4 px-0">
+                <div class="card p-0 ">
+                    <div class="card-title text-center">
+                        <div class="alert alert-success" role="alert">
+                            Please check your mail for otp..
+                        </div>
+                        <form class="signup" th:action="@{/verify-otp}" method="post">
+                            <input type="text" name="otp" placeholder="Enter otp here">
+                            <div class="container text-center">
+                                <button class=" btn btn-warning">verify OTP</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+</body>
+</html>

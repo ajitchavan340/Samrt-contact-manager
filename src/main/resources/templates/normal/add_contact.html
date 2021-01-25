@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org" lang="en" th:replace="normal/main::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="my-card col-md-8 offset-md-2">
+        <div class="my-card-body">
+            <h1 class="text-center"> Add Contacts</h1>
+            <div class="container-fluid mt-1">
+                <div class="row">
+
+                        <form action=""
+                            th:object="${contact}"
+                            enctype="multipart/form-data"
+                            method="post"
+                             th:action="@{/user/contact_process}"
+                        >
+
+                            <div class="input-group ">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter name">
+                            </div>
+                            <div class="input-group ">
+                                <input type="text" id="nick-name" name="nick_name" class="form-control" placeholder="Enter nick name">
+                            </div>
+                            <div class="input-group ">
+                                <input type="text" id="work" name="work" class="form-control" placeholder="Enter work">
+                            </div>
+                            <div class="input-group ">
+                                <input type="email" id="wemail" name="email" class="form-control" placeholder="Enter email">
+                            </div>
+                            <div class="input-group ">
+                                <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Image input</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="profileImage">
+                            </div>
+                            <div class="container text-center">
+                                <button type="submit" class="btn btn-success">submit</button>
+                                <button type="reset" class="btn btn-warning">reset</button>
+                            </div>
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+

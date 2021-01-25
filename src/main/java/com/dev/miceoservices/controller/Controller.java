@@ -3,17 +3,16 @@ package com.dev.miceoservices.controller;
 import com.dev.miceoservices.message.Message;
 import com.dev.miceoservices.model.User;
 import com.dev.miceoservices.repo.UserRepo;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 
 
 @org.springframework.stereotype.Controller
@@ -22,6 +21,8 @@ public class Controller {
     private UserRepo userRepo;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping("/")
     public String home(Model model){
@@ -67,12 +68,41 @@ public class Controller {
 
             model.addAttribute("user", user);
             session.setAttribute("message",new Message("successfully register", "alert-success"));
-            return "signup";
+            return "login";
         }catch(Exception e){
                e.printStackTrace();
                model.addAttribute("user", user);
                session.setAttribute("message",new Message("something went wrong " + e.getMessage(), "alert-danger"));
                return "signup";
         }
+    }
+    @GetMapping("/login")
+    public String userLogin(Model model){
+        model.addAttribute("title","Login here");
+        return "login";
+    }
+    @GetMapping("/changepassword")
+    public String changePassword(){
+        return "changepassword";
+    }
+
+    @PostMapping("/change-password")
+    public String processChangePassword(@RequestParam("oldPassword") String oldPassword ,
+                                        @RequestParam("newPassword") String newPassword,
+                                        Principal principal,HttpSession session){
+        System.out.println("oldpassword" + oldPassword);
+        System.out.println("new password"+ newPassword);
+        User user = userRepo.findByEmail(principal.getName());
+
+        if (bCryptPasswordEncoder.matches(oldPassword,user.getPassword())){
+           user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+           userRepo.save(user);
+           session.setAttribute("message", new Message("Password change successfully" ,"success"));
+        }else {
+            session.setAttribute("message", new Message("Password change successfully" ,"success"));
+            return "/changepassword";
+        }
+
+        return "/login";
     }
 }
